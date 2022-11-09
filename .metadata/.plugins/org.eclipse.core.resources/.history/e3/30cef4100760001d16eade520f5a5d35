@@ -1,0 +1,51 @@
+/**************************************************************************
+AUTOR: MIGUEL MOLINA QUEROL
+FECHA INICIO: 7-11-2022
+FECHA DE FINALIZACION: 7-11-2022
+CENTRO: I.E.S. PABLO SERRANO
+TITULACION: PROGRAMACION APLICACIONES MULTIPLATAFORMA
+MODULO: PROGRAMACION
+COMENTARIO: PROGRAMA QUE LEE UNA CADENA DE 60 CARACTERES Y TE DEVUELVE
+			CUANTOS CARACTERES TIENE DE CADA UNO
+**************************************************************************/
+
+package programacion_1;
+import java.util.Scanner;
+
+public class ClaseX {
+
+	public static void main(String[] args) {
+		Scanner teclado=new Scanner(System.in);
+		String cadena1,aux1,cadena2="",cadena3="";
+		int length,cont=0,total=0,letrasTot=0,padreado=0;
+		char comp,aux2;
+		boolean fin=false;
+		
+		
+		System.out.println("Introduceme una cadena de 60 caracteres o menos: ");
+		cadena1=teclado.nextLine();
+		cadena1=cadena1.toUpperCase();
+		length=cadena1.length();
+		if(length<=20) {
+			for(int i=0;i<length;i++){
+				aux1=cadena1.substring(0,length-i);
+				if(i!=0) {
+					 for(int j=i;j>0;j--) {
+						aux2=cadena1.charAt(length-j);
+						cadena3+=aux2;
+						System.out.println("esto es aux2 "+aux2);
+					 }
+					 cadena2=cadena3+aux1;
+				}
+				else if(i==0){
+					System.out.println(cadena1);
+				}
+				if(i!=0) {
+					System.out.println(cadena2);
+					System.out.println("esto es aux 1 "+aux1);
+				}
+				
+			}
+		}
+	}
+}

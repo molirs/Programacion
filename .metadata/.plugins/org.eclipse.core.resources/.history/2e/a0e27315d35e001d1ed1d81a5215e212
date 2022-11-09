@@ -1,0 +1,83 @@
+/**************************************************************************
+AUTOR: MIGUEL MOLINA QUEROL
+FECHA INICIO: 7-11-2022
+FECHA DE FINALIZACION: 7-11-2022
+CENTRO: I.E.S. PABLO SERRANO
+TITULACION: PROGRAMACION APLICACIONES MULTIPLATAFORMA
+MODULO: PROGRAMACION
+COMENTARIO: PROGRAMA QUE LEE UNA CADENA DE 8 DIGITOS Y LEE FECHA SEXO Y 
+			CURSO DE ELLA Y DANDO ERROR SI NO SON VALIDOS LOS PARAMETROS
+			Y CONTANDO CUANTOS DE CADA HAY.
+**************************************************************************/
+
+package programacion_1;
+import java.util.Scanner;
+
+public class ClaseX {
+
+	public static void main(String[] args) {
+		Scanner teclado=new Scanner(System.in);
+		String cadena1,fecha="";
+		int h=0,m=0,primero=0,segundo=0,date=0,error=0;
+		char sexo,curso;
+		boolean stop=false,valido=true;
+		
+		
+		
+		do{
+			System.out.println("Escribe algo: ");
+			cadena1=teclado.nextLine();
+			if(cadena1.equals("00000000")==true) {
+				stop=true;
+			}
+			if(cadena1.length()!=8) {
+				valido=false;
+			}
+			if (stop==false&&valido==true) {
+				fecha=cadena1.substring(3,4);
+				sexo=cadena1.charAt(4);
+				curso=cadena1.charAt(5);
+				date=Integer.parseInt(fecha);
+			if(date<1995||date>1999) {
+					valido=false;
+				}
+			if(valido==true) {
+				switch(sexo) {
+					case 'm':
+					case 'M':
+						m++;
+					break;
+					case 'h':
+					case 'H':
+						h++;
+					break;
+					default:
+						valido=false;
+				}
+			}
+			if(valido==true) {
+				switch(curso) {
+					case '1':
+						primero++;
+					break;
+					case '2':
+						segundo++;
+					break;
+					default:
+						valido=false;
+				}
+			}
+			}
+			if(valido==false) {
+				error++;
+			}
+			valido=true;
+		}while(stop==false);
+		System.out.println(fecha);
+		System.out.println("hombres: "+h);
+		System.out.println("mujeres: "+m);
+		System.out.println("Numero de numeros erroneos: "+error);
+		System.out.println("Numero de alumnos en Primero "+primero);
+		System.out.println("Numero de alumnos en Segundo "+segundo);
+	}
+}
